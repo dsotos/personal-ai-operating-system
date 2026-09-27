@@ -45,12 +45,14 @@ A practical blueprint for an assistant that can:
 
 ## Repository map
 
-- `docs/` — architecture, memory, routing, privacy, approvals, and content workflows.
+- `docs/` — architecture, mental model, diagrams, tutorial, memory, routing, privacy, approvals, and content workflows.
 - `templates/` — safe starting points for a personal installation.
 - `skills/` — reusable capability contracts.
 - `workflows/` — end-to-end procedures.
 - `examples/` — fictional data only.
 - `scripts/` — validation and secret-safety checks.
+
+Start with [How the system works](docs/how-the-system-works.md) for the visual explanation, then follow the [first-installation tutorial](docs/tutorial.md).
 
 ## Public/private boundary
 
