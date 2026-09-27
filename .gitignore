@@ -1,0 +1,25 @@
+# Secrets and private overlays
+.env
+.env.*
+!.env.example
+private/
+secrets/
+credentials/
+*.key
+*.pem
+*.p12
+*.sqlite
+*.db
+
+# Personal data and local state
+memory/
+sessions/
+attachments/
+voice-samples/
+*.jsonl
+.DS_Store
+
+# Generated files
+build/
+dist/
+.cache/
