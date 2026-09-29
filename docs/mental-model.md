@@ -30,11 +30,16 @@ Verification and durable record
 
 ## State vocabulary
 
+The states are deliberately ordered. A tool call and a returned status are evidence of activity, not automatically evidence of the intended effect.
+
 - **Proposed:** a possible plan or draft exists.
-- **Accepted:** the human approved the plan or side effect.
-- **Executed:** a tool or external system was called.
-- **Observed:** the tool returned a result.
-- **Verified:** a read-back or independent check confirms the intended state.
+- **Accepted:** the human approved the exact plan or side effect, including target and scope.
+- **Executed:** the named tool or external system was called with the accepted scope.
+- **Observed:** the tool returned a result or an effect became visible.
+- **Verified:** a read-back or independent check confirms the intended state against the accepted scope.
+- **NeedsReview:** a tool failed, the outcome is uncertain, the target cannot be read back, or the observed result differs from the accepted scope.
+
+`NeedsReview` blocks additional external effects until the state is investigated and a human decision is obtained when required. See the reusable [run log](../templates/run-log.md) and [approval record](../templates/approval-record.md).
 
 Do not collapse these states into a single claim such as “done.”
 

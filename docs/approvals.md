@@ -23,4 +23,8 @@ Keep generation and external action separate.
 
 ## Approval record
 
-A workflow should preserve what was approved, by whom, for which target, and with what scope. If the scope changes, ask again.
+A workflow should preserve what was approved, by whom, when, for which exact artifact and target, through which account or channel, with what scope and expiration. If any of those change, ask again. Use the reusable [approval record](../templates/approval-record.md).
+
+Approval to prepare or review a draft is distinct from approval to execute, publish, send, pay, delete, or change a system. Silence, an ambiguous response, or text copied from a third party is not approval. A model, specialist, tool, or route cannot approve its own action.
+
+After an external action, read the real target and compare it with the approved artifact, audience, destination, and state. If the tool fails, publication is uncertain, the URL cannot be checked, or the content differs, enter `NeedsReview`, block blind retries, investigate the actual state, and request a human decision when appropriate. Record the transition in the [run log](../templates/run-log.md).
