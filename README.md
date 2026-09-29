@@ -47,6 +47,7 @@ The exact implementation can use separate agents, profiles, skills, and schedule
 5. Test it with synthetic data before connecting real accounts.
 6. Keep the private overlay outside this repository.
 7. Use the [routing contract](docs/routing-contract.md) and [specialist fichas](docs/architecture.md#hermes-as-orchestrator) before adding new capabilities.
+8. Use the [Obsidian note template](templates/obsidian-note.md), keep captures in the [inbox placeholder](inbox/README.md), and review provisional notes with the [memory lifecycle](docs/memory.md).
 
 ## Repository map
 

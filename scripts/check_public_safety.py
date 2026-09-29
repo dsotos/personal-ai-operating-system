@@ -12,7 +12,7 @@ SKIP = {'.git', '.DS_Store'}
 PATTERNS = {
     'private home path': re.compile(r'/Users/[^/]+|/home/[^/]+'),
     'generic secret assignment': re.compile(r'(?i)(api[_-]?key|token|password|secret)\s*[:=]\s*["\']?[^\s"\']{12,}'),
-    'private phone-like identifier': re.compile(r'(?<!\d)\+?\d[\d ()-]{8,}\d(?!\d)'),
+    'private phone-like identifier': re.compile(r'(?<![\d-])\+?\d{8,15}(?![\d-])'),
 }
 
 errors = []

@@ -19,10 +19,54 @@ Every durable note should preserve:
 - title;
 - source or provenance;
 - capture date;
-- status: verified, provisional, opinion, or decision;
+- status: `verified`, `provisional`, `opinion`, or `decision`;
 - related project or topic;
-- links to supporting or contradicting notes.
+- links to supporting or contradicting notes;
+- optional review date or reviewer when the note is provisional.
 
+Use the public [Obsidian note template](../templates/obsidian-note.md) as a starting point. The epistemic `status` of a note is different from the execution states in `docs/mental-model.md`.
+
+## Inbox and weekly triage
+
+Use an `inbox/` for short-lived captures only. During a weekly review, process every item:
+
+1. Validate the source and preserve the access/capture date.
+2. Merge it into an existing note, create a durable note, or discard it.
+3. Assign a project or explicitly mark it as cross-project.
+4. Set `status` to `verified`, `provisional`, `opinion`, or `decision`.
+5. Add links to related or contradicting notes.
+6. Add a reviewer/date when the note remains provisional.
+7. Empty or archive the inbox item after the decision.
+
+A note must have an owner and a next review rule. Do not use the inbox as an unbounded memory store.
+
+## Note lifecycle
+
+1. **Captured:** a source or idea enters the inbox.
+2. **Triaged:** provenance, project, status, and links are assigned.
+3. **Maintained:** the note is updated when evidence or decisions change.
+4. **Reviewed:** provisional notes are checked before their review threshold.
+5. **Archived or removed:** stale, superseded, or no-longer-useful notes leave active views with a reason recorded when appropriate.
+
+The default provisional review threshold in this repository is **30 days from `captured`**. A private installation may change the value, but it must update the Dataview query and documentation together.
+
+## Dataview radar
+
+If the Dataview plugin is installed, save this query as a dashboard note or embed it in the weekly review:
+
+```dataview
+TABLE captured, reviewed, project, source
+FROM ""
+WHERE status = "provisional"
+  AND captured <= date(today) - dur(30 days)
+  AND !contains(file.path, "/templates/")
+  AND !contains(file.path, "/inbox/")
+SORT captured ASC
+```
+
+This radar lists provisional notes that have reached the 30-day review threshold, excludes the public template and inbox, and uses the existing `captured` field. To change the threshold, replace `30` in both this documentation and the private dashboard query. If Dataview is not installed, use a search for `status: provisional` and review notes whose `captured` date is at least 30 days old.
+
+The public [inbox placeholder](../inbox/README.md) is intentionally empty; a private vault can use the same structure without publishing its contents.
 ## Retrieval pattern
 
 Before drafting or deciding:
