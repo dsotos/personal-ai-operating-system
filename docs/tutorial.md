@@ -40,7 +40,17 @@ After a week, review:
 - which approvals were unclear;
 - which procedures should become reusable skills.
 
-Improve the workflow, not just the prompt.
+Keep improving the workflow, not just the prompt.
+
+## Regression evaluations
+
+Run the synthetic routing fixtures and policy checks with:
+
+```sh
+python scripts/test_evaluations.py
+```
+
+The fixtures cover all seven routing categories, ambiguity, restricted data, missing authorization, tool failure, and post-publication discrepancy. They validate the declared contract mechanically; they do not simulate an AI router or replace human review. Add a synthetic case to `examples/routing-evaluations.json` when a new boundary or regression is discovered.
 
 ## Step 6: connect tools gradually
 

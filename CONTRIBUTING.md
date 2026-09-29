@@ -44,6 +44,9 @@ A real broken link should fail CI. The synthetic example URL is excluded deliber
 - [ ] Examples are fictional or generalized.
 - [ ] Documentation explains the trade-off, not only the command.
 - [ ] Validation scripts pass.
+- [ ] `python scripts/test_evaluations.py` passes when routing or workflow contracts change.
+- [ ] `gitleaks git --redact --verbose` passes for the full history.
+- [ ] Lychee passes for Markdown links, with only documented synthetic exclusions.
 
 ## Style
 
