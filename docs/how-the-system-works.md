@@ -9,16 +9,44 @@ A chatbot answers a message. A personal AI operating system maintains context, f
 ```mermaid
 flowchart TD
     H[Human intent] --> C[Conversation and clarification]
-    C --> R[Routing]
-    R --> M[Memory retrieval]
-    M --> W[Workflow and skills]
-    W --> G[Generation or tool call]
-    G --> V[Review and verification]
-    V --> D[Durable record]
+    C --> O[Hermes orchestrator]
+    O <--> K[Obsidian private knowledge vault]
+    O --> R[Routing and specialist selection]
+    R --> S[Focused agent or workflow]
+    S --> O
+    O --> V[Review and verification]
+    V --> D[Curated durable note back to Obsidian]
     V --> A[Approved external action]
 ```
 
 The important shift is from *prompt in, answer out* to *intent in, governed result out*.
+
+The persistent knowledge layer in this architecture is **Obsidian**: a private, linked vault for curated memory, projects, sources, decisions, and procedures. Hermes retrieves relevant context from it and coordinates specialists; verified durable results can be recorded back into it. The vault is not a transcript dump and never flows into the public repository.
+
+![Full system diagram: Hermes, Obsidian, specialist agents, tools, and approval gates](architecture.svg)
+
+## 1a. Hermes coordinates specialist agents
+
+Hermes is the orchestrator, not the only worker. It routes each request to a bounded specialist and remains responsible for coordinating, applying approval rules, and checking the outcome.
+
+```mermaid
+flowchart LR
+    U[Human] --> H[Hermes\nOrchestrator]
+    H -->|monitor and document| M[Media and LinkedIn agent]
+    H -->|track upcoming trips| T[Travel agent]
+    H -->|research and draft| C[Content agent]
+    H -->|prepare private billing files| I[Invoicing agent]
+    M --> H
+    T --> H
+    C --> H
+    I --> H
+    H --> G{External action?}
+    G -->|yes: request approval| A[Human review]
+    G -->|no| V[Verify and record]
+    A --> V
+```
+
+The specialists are examples of focused roles, not universal defaults. A deployment can implement them as separate agents or as narrowly scoped workflows. Either way, give each only the data and tools its task requires; drafts and preparations do not automatically authorize publishing, sending, or payment.
 
 ## 2. The public/private split
 
@@ -44,20 +72,21 @@ Example: “Turn this article into a LinkedIn post.”
 ```mermaid
 sequenceDiagram
     participant U as User
-    participant A as Assistant
-    participant K as Knowledge base
+    participant H as Hermes orchestrator
+    participant K as Obsidian vault
     participant S as Source/web
+    participant W as Content specialist
     participant R as Review gate
 
-    U->>A: Request adaptation
-    A->>K: Search related notes and style
-    A->>S: Verify current claims
-    S-->>A: Sources and limits
-    A->>A: Draft canonical argument
-    A->>A: Adapt to LinkedIn
-    A->>R: Present draft and evidence
-    R-->>A: Approve or revise
-    A->>K: Store final draft, sources, lesson
+    U->>H: Request adaptation
+    H->>K: Retrieve relevant context and style
+    H->>S: Verify current claims
+    S-->>H: Sources and limits
+    H->>W: Ask for a channel-ready draft
+    W-->>H: Draft and rationale
+    H->>R: Present draft and evidence
+    R-->>H: Approve or revise
+    H->>K: Store verified draft, sources, and lesson
 ```
 
 The assistant should not publish simply because it can generate a good draft.

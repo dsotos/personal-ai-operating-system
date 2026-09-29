@@ -6,21 +6,25 @@ This repository is a public reference implementation. It is intentionally generi
 
 ## What this is
 
-A practical blueprint for an assistant that can:
+A practical blueprint for a **personal AI operating system coordinated by Hermes**. Hermes is the orchestrator: it receives requests, chooses the right specialist agent or workflow, gives it only the context and tools it needs, combines the result, and checks whether the work was actually completed.
 
-- capture and organize knowledge;
-- retrieve relevant context before acting;
-- classify requests and route them to the right workflow;
-- brainstorm and research with source discipline;
-- turn ideas into content for different channels;
-- preserve decisions and reusable procedures;
-- ask for approval before external side effects;
-- report what was planned, executed, and actually verified.
+Specialists focus on bounded areas such as:
+
+- **Media and LinkedIn tracking:** find relevant appearances, verify sources, and keep a dated record with links.
+- **Travel operations:** maintain upcoming trips, surface relevant logistics, and retire trips once completed.
+- **Content creation:** research, draft, and adapt material for different channels; publishing remains a separate approval step.
+- **Invoicing:** collect the required period and billing details, prepare the agreed documents, and handle the resulting files through a private workflow.
+
+The exact implementation can use separate agents, profiles, skills, and scheduled workflows. The key is the operating model: Hermes coordinates; specialists have clear scopes; sensitive actions stay behind human approval.
+
+**Obsidian is the persistent knowledge layer.** It is the private, human-readable source of truth for curated memory, project context, research sources, decisions, and reusable procedures. Hermes retrieves the relevant notes to guide work and preserves verified, durable outcomes there. Obsidian stores and connects knowledge; it does not replace Hermes as orchestrator, and it should not become a raw transcript dump.
+
+![Architecture diagram: Hermes orchestrates specialist agents and uses Obsidian as its private knowledge hub](docs/architecture.svg)
 
 ## What this is not
 
 - a dump of a private assistant's memory;
-- a replacement for Hermes Agent, Obsidian, or any model provider;
+- a replacement for Hermes Agent, Obsidian, or any model provider; it documents how these layers can work together;
 - an autonomous publishing system with credentials included;
 - a universal configuration that can be copied without review.
 
