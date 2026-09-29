@@ -62,7 +62,8 @@ Key contracts:
 - [Example capability](skills/source-backed-content-research.md)
 - [Specialist ficha template](templates/specialist-card.md)
 - `examples/` — fictional data only.
-- `scripts/` — validation and secret-safety checks.
+- `scripts/` — validation, secret-safety, and hook-installation scripts.
+- `.github/workflows/` — full-history secret scan and Markdown link checks.
 
 Start with [How the system works](docs/how-the-system-works.md) for the visual explanation, then follow the [first-installation tutorial](docs/tutorial.md).
 

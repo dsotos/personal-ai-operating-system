@@ -1,0 +1,11 @@
+#!/bin/sh
+set -eu
+
+if ! command -v gitleaks >/dev/null 2>&1; then
+  printf '%s\n' 'Gitleaks is required for this repository hook.' >&2
+  printf '%s\n' 'Install it with: brew install gitleaks' >&2
+  printf '%s\n' 'Or use the documented pre-commit setup in CONTRIBUTING.md.' >&2
+  exit 1
+fi
+
+exec gitleaks git --pre-commit --redact --staged --verbose
