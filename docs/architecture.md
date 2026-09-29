@@ -58,7 +58,14 @@ Examples of bounded specialist responsibilities:
 - **Content:** research and draft/adapt content; do not publish without the required approval.
 - **Invoicing:** gather the billing inputs and prepare documents in a private workspace; treat amounts and generated files as sensitive.
 
-These roles may be implemented as separate agent profiles or as tightly scoped agent workflows, depending on the platform. Keep their responsibilities, data access, and allowed tools explicit.
+These roles may be implemented as separate agent profiles or as tightly scoped agent workflows, depending on the platform. Keep their responsibilities, data access, and allowed tools explicit. The public example fichas are:
+
+- [Media and LinkedIn tracking](../skills/specialists/media-linkedin-tracking.md)
+- [Travel operations](../skills/specialists/travel-operations.md)
+- [Content creation](../skills/specialists/content-creation.md)
+- [Invoicing](../skills/specialists/invoicing.md)
+
+The [specialist ficha template](../templates/specialist-card.md) is the starting point for adding another role. Privacy classes limit each specialist and are not widened by a handoff.
 
 ## Recommended components
 

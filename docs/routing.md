@@ -21,3 +21,5 @@ Routing decides which workflow, model, skill, and evidence level a request needs
 5. Refuse or pause when the requested tool exceeds the approval boundary.
 
 Routing is an optimization layer, not an authority layer. The workflow contract and human approval rules still apply after a route is selected.
+
+See the [auditable routing contract](routing-contract.md) for the lane, evidence, and tool mapping. It defines what happens when a request is ambiguous, requires restricted data, or changes from drafting to an external operation.

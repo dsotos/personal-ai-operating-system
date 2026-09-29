@@ -9,9 +9,40 @@ memory:
   path: /path/to/private/knowledge-base
 
 routing:
-  cheap_lane: YOUR_FAST_MODEL
-  deep_lane: YOUR_STRONG_MODEL
+  # Lanes describe workflow posture, not model names.
+  fast_lane: fast-local
+  deep_lane: deep-reasoning
+  ambiguous_request: escalate-to-human
   require_approval_for_external_actions: true
+  categories:
+    quick:
+      lane: fast-local
+      evidence: none-or-supplied-context
+      tools: [local-read, deterministic-scripts]
+    capture:
+      lane: knowledge-capture
+      evidence: provenance-required
+      tools: [knowledge-read, knowledge-write, local-validation]
+    research:
+      lane: source-backed
+      evidence: dated-source-backed
+      tools: [web-search, source-extraction, knowledge-read]
+    writing:
+      lane: drafting
+      evidence: supplied-context-or-cited-sources
+      tools: [local-drafting, style-checks, knowledge-read]
+    content:
+      lane: channel-adaptation
+      evidence: canonical-thesis-and-relevant-sources
+      tools: [local-drafting, source-lookup, knowledge-read]
+    deep:
+      lane: deep-reasoning
+      evidence: assumptions-evidence-and-review
+      tools: [specialist-skills, read-only-tools, delegation]
+    operations:
+      lane: controlled-operation
+      evidence: pre-post-state-and-read-back
+      tools: [named-operational-tool, verification-read-back]
 
 channels:
   messaging:

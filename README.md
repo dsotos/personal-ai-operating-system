@@ -46,13 +46,20 @@ The exact implementation can use separate agents, profiles, skills, and schedule
 4. Add one workflow, such as `idea-to-content`.
 5. Test it with synthetic data before connecting real accounts.
 6. Keep the private overlay outside this repository.
+7. Use the [routing contract](docs/routing-contract.md) and [specialist fichas](docs/architecture.md#hermes-as-orchestrator) before adding new capabilities.
 
 ## Repository map
 
 - `docs/` — architecture, mental model, diagrams, tutorial, memory, routing, privacy, approvals, and content workflows.
 - `templates/` — safe starting points for a personal installation.
-- `skills/` — reusable capability contracts.
+- `skills/` — reusable capability contracts and bounded specialist fichas.
 - `workflows/` — end-to-end procedures.
+
+Key contracts:
+
+- [Routing contract](docs/routing-contract.md)
+- [Example capability](skills/source-backed-content-research.md)
+- [Specialist ficha template](templates/specialist-card.md)
 - `examples/` — fictional data only.
 - `scripts/` — validation and secret-safety checks.
 
